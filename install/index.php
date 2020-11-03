@@ -7,11 +7,11 @@ global $DOCUMENT_ROOT, $MESS;
 
 IncludeModuleLangFile(__FILE__);
 
-if (class_exists("collected_cfeedback")) return;
+if (class_exists("kit_cfeedback")) return;
 
-Class collected_cfeedback extends CModule
+Class kit_cfeedback extends CModule
 {
-	var $MODULE_ID = "collected.cfeedback";
+	var $MODULE_ID = "kit.cfeedback";
 	var $MODULE_VERSION;
 	var $MODULE_VERSION_DATE;
 	var $MODULE_NAME;
@@ -19,7 +19,7 @@ Class collected_cfeedback extends CModule
 	var $MODULE_CSS;
 	var $MODULE_GROUP_RIGHTS = "Y";
 
-	function collected_cfeedback()
+	function kit_cfeedback()
 	{
 		$arModuleVersion = array();
 
@@ -36,36 +36,36 @@ Class collected_cfeedback extends CModule
 		$this->PARTNER_NAME = "ASDAFF";
 		$this->PARTNER_URI = "https://asdaff.github.io/";
 
-		$this->MODULE_NAME = GetMessage("COLLECTED_MODULE_NAME");
-		$this->MODULE_DESCRIPTION = GetMessage("COLLECTED_MODULE_DESCRIPTION");
+		$this->MODULE_NAME = GetMessage("KIT_MODULE_NAME");
+		$this->MODULE_DESCRIPTION = GetMessage("KIT_MODULE_DESCRIPTION");
 	}
 
 	function InstallEvents()
 	{
 	
 		$arFilter = array(
-			"TYPE_ID" => "COLLECTED_CFEEDBACK_FORM",
+			"TYPE_ID" => "KIT_CFEEDBACK_FORM",
 			);
 		$rsET = CEventType::GetList($arFilter);
 		if ($arET = $rsET->Fetch()):
 
 		else:
 
-			$DESCRIPTION = GetMessage("COLLECTED_ETYPE_DESCRIPTION_TEXT");
+			$DESCRIPTION = GetMessage("KIT_ETYPE_DESCRIPTION_TEXT");
 
 
 			$et = new CEventType;
 			$et->Add(array(
 					"LID"           => "ru",
-					"EVENT_NAME"    => "COLLECTED_CFEEDBACK_FORM",
-					"NAME"          => GetMessage("COLLECTED_ETYPE_NAME"),
+					"EVENT_NAME"    => "KIT_CFEEDBACK_FORM",
+					"NAME"          => GetMessage("KIT_ETYPE_NAME"),
 					"DESCRIPTION"   => $DESCRIPTION
 				));
 
 		endif;
 
 		$arFilter = Array(
-			"TYPE_ID"       => "COLLECTED_CFEEDBACK_FORM",
+			"TYPE_ID"       => "KIT_CFEEDBACK_FORM",
 			);
 		$rsMess = CEventMessage::GetList($by="id", $order="desc", $arFilter);
 
@@ -76,13 +76,13 @@ Class collected_cfeedback extends CModule
 			$arSite = $rsSites->Fetch();
 
 			$arrMess["ACTIVE"] = "Y";
-			$arrMess["EVENT_NAME"] = "COLLECTED_CFEEDBACK_FORM";
+			$arrMess["EVENT_NAME"] = "KIT_CFEEDBACK_FORM";
 			$arrMess["LID"] = $arSite["ID"];
 			$arrMess["EMAIL_FROM"] = "#DEFAULT_EMAIL_FROM#";
 			$arrMess["EMAIL_TO"] = "#EMAIL_TO#";
-			$arrMess["SUBJECT"] = GetMessage("COLLECTED_EMESS_SUBJECT");
+			$arrMess["SUBJECT"] = GetMessage("KIT_EMESS_SUBJECT");
 			$arrMess["BODY_TYPE"] = "text";
-			$arrMess["MESSAGE"] = GetMessage("COLLECTED_EMESS_MESSAGE");
+			$arrMess["MESSAGE"] = GetMessage("KIT_EMESS_MESSAGE");
 
 			$emess = new CEventMessage;
 			$emess->Add($arrMess);
@@ -95,11 +95,11 @@ Class collected_cfeedback extends CModule
 	{
 		global $APPLICATION;
 
-		if (!IsModuleInstalled("collected.cfeedback"))
+		if (!IsModuleInstalled("kit.cfeedback"))
 		{
-			RegisterModule("collected.cfeedback");
+			RegisterModule("kit.cfeedback");
 			CopyDirFiles(
-				$_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/collected.cfeedback/install/components/",
+				$_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/kit.cfeedback/install/components/",
 				$_SERVER["DOCUMENT_ROOT"]."/bitrix/components",
 				true, true
 			);
@@ -111,7 +111,7 @@ Class collected_cfeedback extends CModule
 
 	function DoUninstall()
 	{
-		UnRegisterModule("collected.cfeedback");
+		UnRegisterModule("kit.cfeedback");
 	}
 }
 ?>

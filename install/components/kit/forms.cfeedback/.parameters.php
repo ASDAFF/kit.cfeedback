@@ -6,7 +6,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 $site = ($_REQUEST["site"] <> ''? $_REQUEST["site"] : ($_REQUEST["src_site"] <> ''? $_REQUEST["src_site"] : false));
-$arFilter = Array("TYPE_ID" => "COLLECTED_CFEEDBACK_FORM", "ACTIVE" => "Y");
+$arFilter = Array("TYPE_ID" => "KIT_CFEEDBACK_FORM", "ACTIVE" => "Y");
 if($site !== false)
 	$arFilter["LID"] = $site;
 

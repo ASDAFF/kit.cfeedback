@@ -20,7 +20,7 @@ $arResult["PARAMS_HASH"] = md5(serialize($arParams).$this->GetTemplateName());
 $arParams["USE_CAPTCHA"] = (($arParams["USE_CAPTCHA"] != "N" && !$USER->IsAuthorized()) ? "Y" : "N");
 $arParams["EVENT_NAME"] = trim($arParams["EVENT_NAME"]);
 if($arParams["EVENT_NAME"] == '')
-	$arParams["EVENT_NAME"] = "COLLECTED_CFEEDBACK_FORM";
+	$arParams["EVENT_NAME"] = "KIT_CFEEDBACK_FORM";
 $arParams["EMAIL_TO"] = trim($arParams["EMAIL_TO"]);
 if($arParams["EMAIL_TO"] == '')
 	$arParams["EMAIL_TO"] = COption::GetOptionString("main", "email_from");
